@@ -3,6 +3,7 @@
 #reader(lib "htdp-beginner-reader.ss" "lang")((modname q1) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 (require rackunit)
 (require "extras.rkt")
+(require 2htdp/image)
 (check-location "01" "q1.rkt")
 
 (provide distance-to-origin) 
@@ -18,5 +19,30 @@
 ;String -> Character
 ;Given a string, returns the last character of the string
 ;S is a non-empty string
-;Given James, expect s
+;Given James, expect "s"
 (define (string-last s) (string-ref s (- (string-length s) 1)))
+
+;Problem 3
+;Image -> nonnegative integer
+;Given an image, returns number of pixels in image
+;Example: given a 10 pixel by 4 pixel image, returns 40
+;i is an image
+;(define (image-area image) 0)
+(define (image-area i) (* (image-height i) (image-width i)))
+
+;Problem 4
+;string, nonnegative integer->string
+;Given a string and an integer i, returns the string with "_" added at the ith position
+;Example: Given james and 3, returns jam_es
+;s1 is a string, i is an integer
+;(define (string-insert s num) 0)
+
+(define (string-insert s1 num) (string-append (string-append (substring s1 0 num) "_") (substring s1 num (string-length s1)) ))     
+
+;Problem 5
+;string, nonnegative integer->string
+;Given a string and an integer i, returns string with the character at the ith position removed
+;Example: given "james" and 2, returns "jaes".
+;
+;(define (string-delete s2 i2) 0)
+(define (string-delete s2 i2) (string append (substring s2 0 i2) (substring s2 (+ i2 1) (string-length s2)))
